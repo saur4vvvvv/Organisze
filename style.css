@@ -1,0 +1,310 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0a;
+    --panel: #111;
+    --border: #1e1e1e;
+    --accent: #c8a84b;
+    --accent2: #4bc8c8;
+    --text: #d4d4d4;
+    --muted: #555;
+    --danger: #c84b4b;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+    min-height: 100vh;
+    padding: 24px 16px 60px;
+    max-width: 640px;
+    margin: 0 auto;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, #141414 39px, #141414 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, #141414 39px, #141414 40px);
+  }
+
+  header {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 8px;
+    color: var(--accent);
+    text-shadow: 0 0 30px rgba(200,168,75,0.3);
+    line-height: 1;
+  }
+
+  .header-sub {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .quote-box {
+    background: var(--panel);
+    border-left: 3px solid var(--accent2);
+    padding: 12px 16px;
+    margin-bottom: 24px;
+    font-size: 12px;
+    color: var(--accent2);
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+    padding-bottom: 24px;
+  }
+  .quote-box::after {
+    content: '↻ NEW QUOTE';
+    position: absolute;
+    bottom: 6px;
+    right: 10px;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 2px;
+  }
+  .quote-box:hover { background: #161616; }
+
+  .stats-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding: 12px 16px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+  }
+
+  .level-badge {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--accent);
+    line-height: 1;
+    min-width: 60px;
+  }
+
+  .level-label {
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 3px;
+    display: block;
+  }
+
+  .xp-section { flex: 1; }
+
+  .xp-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+
+  .xp-track {
+    height: 6px;
+    background: var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .xp-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+    transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+  }
+
+  .input-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  input[type="text"] {
+    flex: 1;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    color: var(--text);
+    padding: 10px 14px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  input[type="text"]:focus { border-color: var(--accent); }
+  input[type="text"]::placeholder { color: var(--muted); }
+
+  button {
+    background: var(--accent);
+    color: #000;
+    border: none;
+    padding: 10px 18px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+  }
+
+  button:hover { opacity: 0.85; }
+  button:active { transform: scale(0.97); }
+
+  .task-pool { margin-bottom: 28px; }
+
+  .task-pool-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-height: 180px;
+    overflow-y: auto;
+  }
+
+  .pool-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--panel);
+    padding: 8px 12px;
+    font-size: 12px;
+    border: 1px solid var(--border);
+  }
+
+  .delete-btn {
+    background: none;
+    color: var(--danger);
+    padding: 2px 6px;
+    font-size: 14px;
+    font-family: monospace;
+    min-width: unset;
+    letter-spacing: 0;
+  }
+  .delete-btn:hover { opacity: 0.7; }
+
+  .pool-controls {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--accent2);
+    border: 1px solid var(--accent2);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 8px 14px;
+  }
+
+  .daily-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 28px;
+  }
+
+  .daily-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent2);
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: background 0.15s, border-left-color 0.15s;
+    animation: slideIn 0.25s ease forwards;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .daily-item:hover { background: #161616; border-left-color: var(--accent); }
+
+  .check-circle {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--muted);
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: border-color 0.2s;
+  }
+
+  .daily-item:hover .check-circle { border-color: var(--accent); }
+
+  .daily-task-text { font-size: 13px; flex: 1; }
+
+  .daily-xp {
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 1px;
+  }
+
+  .empty-msg {
+    color: var(--muted);
+    font-size: 12px;
+    padding: 16px 0;
+    letter-spacing: 2px;
+  }
+
+  textarea {
+    width: 100%;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--muted);
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    padding: 12px 14px;
+    height: 120px;
+    resize: vertical;
+    outline: none;
+    line-height: 1.6;
+  }
+
+  textarea:focus { border-color: var(--accent); }
+  textarea::placeholder { color: var(--muted); }
+
+  .toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-80px);
+    background: var(--accent);
+    color: #000;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 4px;
+    padding: 14px 32px;
+    z-index: 999;
+    transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--muted); }
