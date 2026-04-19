@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DISCIPLINE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="toast" id="toast">⬆ LEVEL UP</div>
+
+<header>
+  <h1>DISCIPLINE</h1>
+  <div class="header-sub">Mission Control — Stay Hard</div>
+</header>
+
+<div class="quote-box" id="quoteBox" title="Click for new quote"></div>
+
+<div class="stats-bar">
+  <div>
+    <span class="level-label">LEVEL</span>
+    <div class="level-badge" id="levelBadge">1</div>
+  </div>
+
+  <div class="xp-section">
+    <div class="xp-header">
+      <span>XP PROGRESS</span>
+      <span id="xpLabel">0 / 250</span>
+    </div>
+    <div class="xp-track">
+      <div class="xp-fill" id="xpFill" style="width:0%"></div>
+    </div>
+  </div>
+</div>
+
+<div class="section-label">Task Pool</div>
+
+<div class="task-pool">
+  <div class="input-row">
+    <input type="text" id="taskInput" placeholder="Add a task to pool..." />
+    <button onclick="addTask()">ADD</button>
+  </div>
+
+  <div class="task-pool-list" id="taskPool"></div>
+
+  <div class="pool-controls">
+    <button class="btn-secondary" onclick="generateDaily()">GENERATE DAILY TASKS</button>
+  </div>
+</div>
+
+<div class="section-label">Daily Tasks — <span id="completedCount">0</span> completed today</div>
+<div class="daily-list" id="dailyList"></div>
+
+<div class="section-label">Field Notes</div>
+<textarea id="notes" placeholder="Write your notes, plans, reflections..."></textarea>
+
+<!-- JS goes here -->
+<script src="script.js"></script>
+
+</body>
+</html>
