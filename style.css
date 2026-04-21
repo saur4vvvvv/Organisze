@@ -1,12 +1,31 @@
 /* =========================
-PAGE SYSTEM
+BASE THEME
 ========================= */
 
-body{
-  user-select: none;
-  margin: 0;
-  font-family: 'Share Tech Mono', monospace;
+:root{
+  --bg:#05070a;
+  --panel:#0b1118;
+  --border:#14202c;
+
+  --accent:#00f5ff;   /* CYAN NEON */
+  --accent2:#00c8ff;  /* DARKER CYAN */
+
+  --muted:#3a4a5a;
+  --text:#d7f9ff;
 }
+
+body{
+  user-select:none;
+  margin:0;
+  font-family:'Share Tech Mono', monospace;
+  background:var(--bg);
+  color:var(--text);
+}
+
+
+/* =========================
+PAGE SYSTEM
+========================= */
 
 .page{
   display:none;
@@ -14,81 +33,83 @@ body{
 
 .page.active{
   display:block;
-  padding-bottom:70px; /* space for bottom nav */
+  padding-bottom:75px;
 }
 
 
 /* =========================
-HEADER NAVIGATION (DISABLED)
+HEADER
 ========================= */
 
-header button{
-  display:none;
+header{
+  text-align:center;
+  padding:18px;
+  border-bottom:1px solid var(--border);
+  background:linear-gradient(180deg, #061018, #05070a);
+}
+
+header h1{
+  font-family:'Bebas Neue', sans-serif;
+  letter-spacing:3px;
+  margin:0;
+  color:var(--accent);
+  text-shadow:0 0 10px var(--accent);
+}
+
+.header-sub{
+  font-size:12px;
+  opacity:0.8;
+  color:var(--accent2);
 }
 
 
 /* =========================
-ACHIEVEMENTS PAGE
+ACHIEVEMENTS
 ========================= */
-
-#achievementsPage{
-  margin-top:10px;
-}
 
 #achievementsPage h2{
   font-family:'Bebas Neue', sans-serif;
   letter-spacing:4px;
   color:var(--accent);
+  text-shadow:0 0 10px var(--accent);
   margin-bottom:16px;
 }
-
-
-/* =========================
-ACHIEVEMENT CARDS
-========================= */
 
 .achievement{
   background:var(--panel);
   border:1px solid var(--border);
-  border-left:4px solid var(--accent);
+  border-left:3px solid var(--accent);
   padding:12px 14px;
   margin-bottom:8px;
   font-size:12px;
   line-height:1.5;
-  animation:slideIn 0.25s ease forwards;
+  box-shadow:0 0 10px rgba(0,245,255,0.08);
 }
 
 .achievement b{
   color:var(--accent);
-  font-size:13px;
+  text-shadow:0 0 6px var(--accent);
 }
 
-
-/* =========================
-LOCKED ACHIEVEMENTS
-========================= */
-
+/* locked */
 .achievement.locked{
-  border-left:4px solid var(--muted);
-  opacity:0.45;
+  border-left:3px solid var(--muted);
+  opacity:0.4;
 }
 
 .achievement.locked b{
   color:var(--muted);
+  text-shadow:none;
 }
 
-
-/* =========================
-UNLOCKED ACHIEVEMENT EFFECT
-========================= */
-
+/* glow unlocked */
 .achievement:not(.locked){
-  box-shadow:0 0 12px rgba(200,168,75,0.15);
+  box-shadow:0 0 12px rgba(0,245,255,0.15);
 }
 
 
 /* =========================
-ACHIEVEMENT LIST LAYOUT
+LISTS
 ========================= */
 
 #unlockedAchievements,
@@ -100,11 +121,12 @@ ACHIEVEMENT LIST LAYOUT
 
 
 /* =========================
-ACHIEVEMENT ICONS
+ICONS
 ========================= */
 
 .achievement::before{
-  content:"🏆 ";
+  content:"⚡ ";
+  color:var(--accent);
 }
 
 .achievement.locked::before{
@@ -121,13 +143,12 @@ BOTTOM NAVIGATION
   bottom:0;
   left:0;
   width:100%;
-  height:58px;
-  background:var(--panel);
+  height:60px;
+  background:rgba(10,18,25,0.95);
   border-top:1px solid var(--border);
   display:flex;
   justify-content:space-around;
   align-items:center;
-  z-index:999;
   backdrop-filter: blur(10px);
 }
 
@@ -140,12 +161,44 @@ BOTTOM NAVIGATION
   font-size:22px;
   cursor:pointer;
   transition:0.2s ease;
-  padding:8px;
+  padding:10px;
+}
+
+/* NEON HOVER EFFECT */
+.nav-btn:hover{
+  color:var(--accent);
+  text-shadow:0 0 10px var(--accent);
+  transform:scale(1.2);
 }
 
 
-/* HOVER EFFECT */
-.nav-btn:hover{
-  color:var(--accent);
-  transform:scale(1.15);
+/* =========================
+GLOBAL NEON EFFECTS
+========================= */
+
+button{
+  font-family:'Share Tech Mono', monospace;
+}
+
+input, textarea{
+  background:#0b1118;
+  border:1px solid var(--border);
+  color:var(--text);
+  outline:none;
+}
+
+input:focus, textarea:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 8px rgba(0,245,255,0.25);
+}
+
+
+/* optional glow scroll feel */
+::-webkit-scrollbar{
+  width:6px;
+}
+
+::-webkit-scrollbar-thumb{
+  background:var(--accent);
+  border-radius:10px;
 }
