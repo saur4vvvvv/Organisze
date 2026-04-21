@@ -1,12 +1,12 @@
 /* =========================
-   DISCIPLINE \u2014 UPGRADED THEME
+   DISCIPLINE — UPGRADED THEME
    Aesthetic: Military-Noir Cyberpunk
    Fonts: Bebas Neue + Share Tech Mono
 ========================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&display=swap');
 
-/* \u2500\u2500 TOKENS \u2500\u2500 */
+/* ── TOKENS ── */
 :root {
   --bg:       #04080d;
   --panel:    #080f17;
@@ -33,7 +33,7 @@
   --transition: 0.18s cubic-bezier(0.4,0,0.2,1);
 }
 
-/* \u2500\u2500 RESET & BASE \u2500\u2500 */
+/* ── RESET & BASE ── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -51,7 +51,6 @@ body {
   color: var(--text);
   min-height: 100vh;
   overflow-x: hidden;
-  /* subtle scanline texture */
   background-image:
     repeating-linear-gradient(
       0deg,
@@ -62,431 +61,66 @@ body {
     );
 }
 
-/* \u2500\u2500 PAGE SYSTEM \u2500\u2500 */
-.page {
-  display: none;
-  padding: 16px 16px 80px;
-  animation: fadeIn 0.2s ease;
-}
+/* ── PAGE SYSTEM ── */
+.page { display:none; }
+.page.active { display:block; }
 
-.page.active {
-  display: block;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* \u2500\u2500 HEADER \u2500\u2500 */
+/* ── HEADER ── */
 header {
-  text-align: center;
-  padding: 20px 16px 16px;
-  border-bottom: 1px solid var(--border2);
-  background: linear-gradient(180deg, #061220 0%, var(--bg) 100%);
-  position: relative;
-  overflow: hidden;
-}
-
-/* corner decorations */
-header::before,
-header::after {
-  content: '';
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border-color: var(--accent3);
-  border-style: solid;
-  opacity: 0.4;
-}
-
-header::before {
-  top: 8px; left: 12px;
-  border-width: 1px 0 0 1px;
-}
-
-header::after {
-  top: 8px; right: 12px;
-  border-width: 1px 1px 0 0;
+  text-align:center;
+  padding:20px;
+  border-bottom:1px solid var(--border2);
 }
 
 header h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 32px;
-  letter-spacing: 8px;
-  color: var(--accent);
-  text-shadow: 0 0 20px var(--accent), 0 0 40px rgba(0,245,255,0.3);
-  margin: 0;
-  position: relative;
+  font-family:'Bebas Neue',sans-serif;
+  color:var(--accent);
+  letter-spacing:6px;
+  text-shadow:0 0 20px var(--accent);
 }
 
-/* blinking cursor after title */
-header h1::after {
-  content: '_';
-  animation: blink 1s step-end infinite;
-  opacity: 0.8;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 0.8; }
-  50%       { opacity: 0; }
-}
-
-.header-sub {
-  font-size: 10px;
-  letter-spacing: 3px;
-  color: var(--text-dim);
-  margin-top: 4px;
-  text-transform: uppercase;
-}
-
-/* \u2500\u2500 SECTION LABELS \u2500\u2500 */
-.section-label {
-  font-size: 10px;
-  letter-spacing: 4px;
-  color: var(--accent3);
-  text-transform: uppercase;
-  padding: 20px 0 8px;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.section-label::before {
-  content: '//';
-  color: var(--muted2);
-  font-size: 11px;
-}
-
-/* \u2500\u2500 QUOTE BOX \u2500\u2500 */
-.quote-box {
-  background: var(--panel);
-  border: 1px solid var(--border2);
-  border-left: 3px solid var(--accent3);
-  padding: 14px 16px;
-  font-size: 12px;
-  line-height: 1.7;
-  color: var(--text-dim);
-  cursor: pointer;
-  transition: var(--transition);
-  position: relative;
-  letter-spacing: 0.5px;
-}
-
-.quote-box::before {
-  content: '"';
-  position: absolute;
-  top: 6px; right: 12px;
-  font-size: 28px;
-  color: var(--border2);
-  font-family: Georgia, serif;
-  line-height: 1;
-}
-
-.quote-box:hover {
-  border-left-color: var(--accent);
-  color: var(--text);
-  box-shadow: var(--glow-sm);
-}
-
-/* \u2500\u2500 STATS BAR \u2500\u2500 */
-.stats-bar {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  background: var(--panel);
-  border: 1px solid var(--border2);
-  padding: 14px 16px;
-  margin-top: 12px;
-}
-
-.level-label {
-  font-size: 9px;
-  letter-spacing: 3px;
-  color: var(--text-dim);
-  display: block;
-  margin-bottom: 4px;
-}
-
-.level-badge {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 36px;
-  line-height: 1;
-  color: var(--accent);
-  text-shadow: var(--glow-sm);
-  min-width: 40px;
-  text-align: center;
-}
-
-.xp-section {
-  flex: 1;
-}
-
-.xp-header {
-  display: flex;
-  justify-content: space-between;
-  font-size: 10px;
-  letter-spacing: 1px;
-  color: var(--text-dim);
-  margin-bottom: 6px;
-}
-
-.xp-track {
-  height: 6px;
-  background: var(--border2);
-  border-radius: 0;
-  overflow: hidden;
-  position: relative;
-}
-
-.xp-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent3), var(--accent));
-  box-shadow: 0 0 8px var(--accent);
-  transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
-  position: relative;
-}
-
-/* animated shimmer on XP bar */
-.xp-fill::after {
-  content: '';
-  position: absolute;
-  top: 0; right: 0;
-  width: 20px; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-  animation: shimmer 2s ease infinite;
-}
-
-@keyframes shimmer {
-  0%   { transform: translateX(-20px); opacity: 0; }
-  50%  { opacity: 1; }
-  100% { transform: translateX(10px); opacity: 0; }
-}
-
-/* \u2500\u2500 TASK POOL \u2500\u2500 */
-.task-pool {
-  background: var(--panel);
-  border: 1px solid var(--border2);
-  padding: 14px;
-}
-
-.input-row {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-input[type="text"] {
-  flex: 1;
-  background: var(--bg);
-  border: 1px solid var(--border2);
-  border-radius: var(--radius);
-  color: var(--text);
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 12px;
-  padding: 10px 12px;
-  letter-spacing: 0.5px;
-  transition: var(--transition);
-  outline: none;
-}
-
-input[type="text"]::placeholder {
-  color: var(--muted);
-  letter-spacing: 1px;
-}
-
-input[type="text"]:focus {
-  border-color: var(--accent);
-  box-shadow: var(--glow-sm), inset 0 0 12px rgba(0,245,255,0.04);
-}
-
-/* \u2500\u2500 BUTTONS \u2500\u2500 */
+/* ── BASIC UI ── */
 button {
-  font-family: 'Share Tech Mono', monospace;
-  cursor: pointer;
-  border: none;
-  border-radius: var(--radius);
-  transition: var(--transition);
-  letter-spacing: 1.5px;
-  font-size: 11px;
+  background:black;
+  color:cyan;
+  border:1px solid cyan;
+  padding:10px;
+  margin:5px;
 }
 
-/* primary action buttons */
-.task-pool > button,
-.input-row > button,
-[onclick="generateDaily()"] {
-  background: transparent;
-  border: 1px solid var(--accent3);
-  color: var(--accent);
-  padding: 10px 16px;
-  text-transform: uppercase;
-  position: relative;
-  overflow: hidden;
+/* ── NO FAP EXTENSION ── */
+#nofapPage .level-badge{
+  font-size:48px;
+  color:var(--gold);
+  text-shadow:0 0 12px rgba(255,215,0,0.4);
 }
 
-.task-pool > button::before,
-.input-row > button::before,
-[onclick="generateDaily()"]::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--accent);
-  transform: translateX(-101%);
-  transition: transform 0.2s ease;
-  z-index: 0;
+#nofapRank{
+  font-size:12px;
+  color:var(--text-dim);
+  letter-spacing:2px;
+  margin-top:10px;
+}
+```css
+body {
+  background: #05070d;
+  color: #00f5ff;
+  font-family: monospace;
 }
 
-.task-pool > button:hover::before,
-.input-row > button:hover::before,
-[onclick="generateDaily()"]:hover::before {
-  transform: translateX(0);
+.page { display:none; }
+.page.active { display:block; }
+
+button {
+  background: black;
+  color: cyan;
+  border: 1px solid cyan;
+  padding: 10px;
+  margin: 5px;
 }
 
-.task-pool > button span,
-.input-row > button span,
-[onclick="generateDaily()"] span {
-  position: relative;
-  z-index: 1;
-}
-
-.task-pool > button:hover,
-.input-row > button:hover,
-[onclick="generateDaily()"]:hover {
-  color: var(--bg);
-  box-shadow: var(--glow-sm);
-}
-
-/* generate daily full-width */
-[onclick="generateDaily()"] {
+nav {
+  position: fixed;
+  bottom: 0;
   width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  text-align: center;
 }
-
-/* \u2500\u2500 POOL ITEMS \u2500\u2500 */
-.pool-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 9px 12px;
-  border: 1px solid var(--border);
-  border-left: 2px solid var(--muted);
-  margin-bottom: 4px;
-  font-size: 12px;
-  transition: var(--transition);
-  background: var(--bg);
-}
-
-.pool-item:hover {
-  border-color: var(--border2);
-  border-left-color: var(--accent3);
-  background: var(--panel2);
-}
-
-.delete-btn {
-  background: transparent;
-  border: 1px solid transparent;
-  color: var(--muted2);
-  font-size: 12px;
-  padding: 3px 7px;
-  letter-spacing: 0;
-}
-
-.delete-btn:hover {
-  color: var(--danger);
-  border-color: var(--danger);
-  text-shadow: 0 0 8px var(--danger);
-}
-
-/* \u2500\u2500 DAILY TASKS \u2500\u2500 */
-.daily-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
-  background: var(--panel);
-  border: 1px solid var(--border2);
-  border-left: 3px solid var(--accent3);
-  margin-bottom: 6px;
-  cursor: pointer;
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-
-/* sweep effect on complete */
-.daily-item::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(0,245,255,0.06));
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.daily-item:hover {
-  border-left-color: var(--accent);
-  box-shadow: var(--glow-sm);
-  transform: translateX(2px);
-}
-
-.daily-item:hover::after {
-  opacity: 1;
-}
-
-.check-circle {
-  width: 18px;
-  height: 18px;
-  border: 1.5px solid var(--accent3);
-  border-radius: 50%;
-  flex-shrink: 0;
-  position: relative;
-  transition: var(--transition);
-}
-
-.daily-item:hover .check-circle {
-  border-color: var(--accent);
-  box-shadow: 0 0 8px var(--accent);
-}
-
-.daily-item:hover .check-circle::after {
-  content: '\u2713';
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  color: var(--accent);
-}
-
-.daily-task-text {
-  flex: 1;
-  font-size: 12px;
-  letter-spacing: 0.5px;
-}
-
-.daily-xp {
-  font-size: 10px;
-  color: var(--accent);
-  letter-spacing: 1px;
-  opacity: 0.7;
-  text-shadow: var(--glow-sm);
-}
-
-/* \u2500\u2500 EMPTY MSG \u2500\u2500 */
-.empty-msg {
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: var(--muted);
-  text-align: center;
-  padding: 20px;
-  border: 1px dashed var(--border2);
-}
-
-/* \u2500\u2500 NOTES \u2500\u2500 */
-textarea#notes {
-  width: 
