@@ -1,39 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>DISCIPLINE</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
 <style>
-/* Prevent text copying */
+
 body{
-  user-select:none;
+user-select:none;
+margin:0;
+font-family:'Share Tech Mono', monospace;
+background:#0b0b0b;
+color:#eaeaea;
 }
 
-/* Page system */
+/* Pages */
+
 .page{
-  display:none;
+display:none;
+padding:20px;
+padding-bottom:80px;
 }
 
 .page.active{
-  display:block;
+display:block;
 }
 
-/* Achievements layout */
+/* Header */
+
+header{
+text-align:center;
+padding:20px;
+border-bottom:1px solid #222;
+}
+
+header h1{
+font-family:'Bebas Neue', sans-serif;
+letter-spacing:2px;
+margin:0;
+}
+
+.header-sub{
+font-size:12px;
+opacity:0.8;
+}
+
+/* Achievements */
+
 .achievement{
-  padding:10px;
-  border:1px solid #333;
-  margin-bottom:8px;
-  border-radius:6px;
+padding:10px;
+border:1px solid #333;
+margin-bottom:8px;
+border-radius:6px;
 }
 
 .achievement.locked{
-  opacity:0.4;
+opacity:0.35;
 }
+
+/* Sections */
+
+.section-label{
+margin-top:20px;
+margin-bottom:10px;
+font-size:14px;
+letter-spacing:1px;
+opacity:0.7;
+}
+
+/* Inputs */
+
+.input-row{
+display:flex;
+gap:8px;
+}
+
+input, textarea{
+background:#111;
+border:1px solid #333;
+color:white;
+padding:8px;
+border-radius:4px;
+width:100%;
+}
+
+textarea{
+margin-top:10px;
+min-height:120px;
+resize:vertical;
+}
+
+button{
+background:#1b1b1b;
+border:1px solid #333;
+color:white;
+padding:8px 12px;
+border-radius:5px;
+cursor:pointer;
+}
+
+/* Bottom Navigation */
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+height:60px;
+background:#0f0f0f;
+border-top:1px solid #222;
+display:flex;
+justify-content:space-around;
+align-items:center;
+}
+
+.nav-btn{
+background:none;
+border:none;
+color:#aaa;
+font-size:20px;
+cursor:pointer;
+}
+
+.nav-btn:hover{
+color:white;
+}
+
 </style>
 
 </head>
@@ -43,63 +142,78 @@ body{
 <div class="toast" id="toast">⬆ LEVEL UP</div>
 
 <header>
-  <h1>DISCIPLINE</h1>
-  <div class="header-sub">Mission Control — Stay Hard</div>
 
-  <!-- Navigation -->
-  <button onclick="showHome()">HOME</button>
-  <button onclick="showAchievements()">ACHIEVEMENTS</button>
+<h1>DISCIPLINE</h1>
+
+<div class="header-sub">
+Stay Hard Motherfucker
+</div>
+
 </header>
 
 
-<!-- ================= HOME PAGE ================= -->
+<!-- HOME PAGE -->
 
 <div id="homePage" class="page active">
 
 <div class="quote-box" id="quoteBox" title="Click for new quote"></div>
 
 <div class="stats-bar">
-  <div>
-    <span class="level-label">LEVEL</span>
-    <div class="level-badge" id="levelBadge">1</div>
-  </div>
 
-  <div class="xp-section">
-    <div class="xp-header">
-      <span>XP PROGRESS</span>
-      <span id="xpLabel">0 / 250</span>
-    </div>
-    <div class="xp-track">
-      <div class="xp-fill" id="xpFill" style="width:0%"></div>
-    </div>
-  </div>
+<div>
+<span class="level-label">LEVEL</span>
+<div class="level-badge" id="levelBadge">1</div>
 </div>
+
+<div class="xp-section">
+
+<div class="xp-header">
+<span>XP PROGRESS</span>
+<span id="xpLabel">0 / 250</span>
+</div>
+
+<div class="xp-track">
+<div class="xp-fill" id="xpFill" style="width:0%"></div>
+</div>
+
+</div>
+
+</div>
+
 
 <div class="section-label">Task Pool</div>
 
 <div class="task-pool">
-  <div class="input-row">
-    <input type="text" id="taskInput" placeholder="Add a task to pool..." />
-    <button onclick="addTask()">ADD</button>
-  </div>
 
-  <div class="task-pool-list" id="taskPool"></div>
-
-  <div class="pool-controls">
-    <button class="btn-secondary" onclick="generateDaily()">GENERATE DAILY TASKS</button>
-  </div>
+<div class="input-row">
+<input type="text" id="taskInput" placeholder="Add a task to pool...">
+<button onclick="addTask()">ADD</button>
 </div>
 
-<div class="section-label">Daily Tasks — <span id="completedCount">0</span> completed today</div>
-<div class="daily-list" id="dailyList"></div>
+<div id="taskPool"></div>
+
+<div style="margin-top:10px">
+<button onclick="generateDaily()">GENERATE DAILY TASKS</button>
+</div>
+
+</div>
+
+
+<div class="section-label">
+Daily Tasks — <span id="completedCount">0</span> completed today
+</div>
+
+<div id="dailyList"></div>
+
 
 <div class="section-label">Field Notes</div>
+
 <textarea id="notes" placeholder="Write your notes, plans, reflections..."></textarea>
 
 </div>
 
 
-<!-- ================= ACHIEVEMENTS PAGE ================= -->
+<!-- ACHIEVEMENTS PAGE -->
 
 <div id="achievementsPage" class="page">
 
@@ -114,21 +228,33 @@ body{
 </div>
 
 
-<!-- JS -->
+<!-- Bottom Navigation -->
+
+<div class="bottom-nav">
+
+<button class="nav-btn" onclick="showHome()" title="Home">
+🏠
+</button>
+
+<button class="nav-btn" onclick="showAchievements()" title="Achievements">
+🏆
+</button>
+
+</div>
+
+
 <script src="script.js"></script>
 
 <script>
 
-/* Page Navigation */
-
 function showHome(){
-  document.getElementById("homePage").classList.add("active")
-  document.getElementById("achievementsPage").classList.remove("active")
+document.getElementById("homePage").classList.add("active")
+document.getElementById("achievementsPage").classList.remove("active")
 }
 
 function showAchievements(){
-  document.getElementById("homePage").classList.remove("active")
-  document.getElementById("achievementsPage").classList.add("active")
+document.getElementById("homePage").classList.remove("active")
+document.getElementById("achievementsPage").classList.add("active")
 }
 
 </script>
