@@ -11,88 +11,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
-<style>
-
-/* KEEP ORIGINAL SYSTEM SAFE */
-body{
-user-select:none;
-margin:0;
-font-family:'Share Tech Mono', monospace;
-background:#0b0b0b;
-color:#eaeaea;
-}
-
-/* Pages (unchanged behavior for JS) */
-.page{
-display:none;
-}
-
-.page.active{
-display:block;
-}
-
-/* Header (ONLY TEXT NOW) */
-header{
-text-align:center;
-padding:18px;
-border-bottom:1px solid #222;
-}
-
-header h1{
-font-family:'Bebas Neue', sans-serif;
-letter-spacing:2px;
-margin:0;
-}
-
-.header-sub{
-font-size:12px;
-opacity:0.8;
-}
-
-/* KEEP YOUR ORIGINAL CLASSES SAFE */
-.achievement{
-padding:10px;
-border:1px solid #333;
-margin-bottom:8px;
-border-radius:6px;
-}
-
-.achievement.locked{
-opacity:0.35;
-}
-
-/* Bottom Navigation (NEW BUT SAFE) */
-.bottom-nav{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-height:60px;
-background:#0f0f0f;
-border-top:1px solid #222;
-display:flex;
-justify-content:space-around;
-align-items:center;
-z-index:999;
-}
-
-/* ICON BUTTONS */
-.nav-btn{
-background:none;
-border:none;
-color:#aaa;
-font-size:22px;
-cursor:pointer;
-transition:0.2s;
-}
-
-.nav-btn:hover{
-color:white;
-transform:scale(1.1);
-}
-
-</style>
-
 </head>
 
 <body>
@@ -201,7 +119,7 @@ Daily Tasks — <span id="completedCount">0</span> completed today
 </div>
 
 
-<!-- JS (UNCHANGED CONNECTION) -->
+<!-- JS -->
 <script src="script.js"></script>
 
 <script>
