@@ -1,140 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>DISCIPLINE</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
 
-<div class="toast" id="toast">⬆ LEVEL UP</div>
-
 <header>
-
 <h1>DISCIPLINE</h1>
-
-<div class="header-sub">
-Stay Hard Motherfucker
-</div>
-
 </header>
 
-
-<!-- ================= HOME PAGE ================= -->
-
+<!-- HOME -->
 <div id="homePage" class="page active">
 
-<div class="quote-box" id="quoteBox" title="Click for new quote"></div>
+<div id="level">Level: 1</div>
+<div id="xp">XP: 0</div>
 
-<div class="stats-bar">
-
-<div>
-<span class="level-label">LEVEL</span>
-<div class="level-badge" id="levelBadge">1</div>
-</div>
-
-<div class="xp-section">
-
-<div class="xp-header">
-<span>XP PROGRESS</span>
-<span id="xpLabel">0 / 250</span>
-</div>
-
-<div class="xp-track">
-<div class="xp-fill" id="xpFill" style="width:0%"></div>
-</div>
+<button onclick="addXP()">+10 XP</button>
 
 </div>
+
+<!-- NO FAP -->
+<div id="nofapPage" class="page">
+<h2>No Fap System</h2>
+
+<button onclick="startNoFap()">START</button>
+
+<div>Days: <span id="nofapDays">0</span></div>
+<div id="nofapRank">Rank: None</div>
 
 </div>
 
 
-<div class="section-label">Task Pool</div>
+<nav>
+<button onclick="show('home')">Home</button>
+<button onclick="show('nofap')">NoFap</button>
+</nav>
 
-<div class="task-pool">
-
-<div class="input-row">
-<input type="text" id="taskInput" placeholder="Add a task to pool...">
-<button onclick="addTask()">ADD</button>
-</div>
-
-<div id="taskPool"></div>
-
-<div style="margin-top:10px">
-<button onclick="generateDaily()">GENERATE DAILY TASKS</button>
-</div>
-
-</div>
-
-
-<div class="section-label">
-Daily Tasks — <span id="completedCount">0</span> completed today
-</div>
-
-<div id="dailyList"></div>
-
-
-<div class="section-label">Field Notes</div>
-
-<textarea id="notes" placeholder="Write your notes, plans, reflections..."></textarea>
-
-</div>
-
-
-<!-- ================= ACHIEVEMENTS PAGE ================= -->
-
-<div id="achievementsPage" class="page">
-
-<h2>Achievements</h2>
-
-<div class="section-label">Unlocked</div>
-<div id="unlockedAchievements"></div>
-
-<div class="section-label">Locked</div>
-<div id="lockedAchievements"></div>
-
-</div>
-
-
-<!-- ================= BOTTOM NAV ================= -->
-
-<div class="bottom-nav">
-
-<button class="nav-btn" onclick="showHome()" title="Home">
-🏠
-</button>
-
-<button class="nav-btn" onclick="showAchievements()" title="Achievements">
-🏆
-</button>
-
-</div>
-
-
-<!-- JS -->
 <script src="script.js"></script>
-
-<script>
-
-function showHome(){
-document.getElementById("homePage").classList.add("active")
-document.getElementById("achievementsPage").classList.remove("active")
-}
-
-function showAchievements(){
-document.getElementById("homePage").classList.remove("active")
-document.getElementById("achievementsPage").classList.add("active")
-}
-
-</script>
-
 </body>
 </html>
