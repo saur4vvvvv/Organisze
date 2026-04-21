@@ -13,6 +13,7 @@
 
 <style>
 
+/* KEEP ORIGINAL SYSTEM SAFE */
 body{
 user-select:none;
 margin:0;
@@ -21,23 +22,19 @@ background:#0b0b0b;
 color:#eaeaea;
 }
 
-/* Pages */
-
+/* Pages (unchanged behavior for JS) */
 .page{
 display:none;
-padding:20px;
-padding-bottom:80px;
 }
 
 .page.active{
 display:block;
 }
 
-/* Header */
-
+/* Header (ONLY TEXT NOW) */
 header{
 text-align:center;
-padding:20px;
+padding:18px;
 border-bottom:1px solid #222;
 }
 
@@ -52,8 +49,7 @@ font-size:12px;
 opacity:0.8;
 }
 
-/* Achievements */
-
+/* KEEP YOUR ORIGINAL CLASSES SAFE */
 .achievement{
 padding:10px;
 border:1px solid #333;
@@ -65,49 +61,7 @@ border-radius:6px;
 opacity:0.35;
 }
 
-/* Sections */
-
-.section-label{
-margin-top:20px;
-margin-bottom:10px;
-font-size:14px;
-letter-spacing:1px;
-opacity:0.7;
-}
-
-/* Inputs */
-
-.input-row{
-display:flex;
-gap:8px;
-}
-
-input, textarea{
-background:#111;
-border:1px solid #333;
-color:white;
-padding:8px;
-border-radius:4px;
-width:100%;
-}
-
-textarea{
-margin-top:10px;
-min-height:120px;
-resize:vertical;
-}
-
-button{
-background:#1b1b1b;
-border:1px solid #333;
-color:white;
-padding:8px 12px;
-border-radius:5px;
-cursor:pointer;
-}
-
-/* Bottom Navigation */
-
+/* Bottom Navigation (NEW BUT SAFE) */
 .bottom-nav{
 position:fixed;
 bottom:0;
@@ -119,18 +73,22 @@ border-top:1px solid #222;
 display:flex;
 justify-content:space-around;
 align-items:center;
+z-index:999;
 }
 
+/* ICON BUTTONS */
 .nav-btn{
 background:none;
 border:none;
 color:#aaa;
-font-size:20px;
+font-size:22px;
 cursor:pointer;
+transition:0.2s;
 }
 
 .nav-btn:hover{
 color:white;
+transform:scale(1.1);
 }
 
 </style>
@@ -152,7 +110,7 @@ Stay Hard Motherfucker
 </header>
 
 
-<!-- HOME PAGE -->
+<!-- ================= HOME PAGE ================= -->
 
 <div id="homePage" class="page active">
 
@@ -213,7 +171,7 @@ Daily Tasks — <span id="completedCount">0</span> completed today
 </div>
 
 
-<!-- ACHIEVEMENTS PAGE -->
+<!-- ================= ACHIEVEMENTS PAGE ================= -->
 
 <div id="achievementsPage" class="page">
 
@@ -228,7 +186,7 @@ Daily Tasks — <span id="completedCount">0</span> completed today
 </div>
 
 
-<!-- Bottom Navigation -->
+<!-- ================= BOTTOM NAV ================= -->
 
 <div class="bottom-nav">
 
@@ -243,6 +201,7 @@ Daily Tasks — <span id="completedCount">0</span> completed today
 </div>
 
 
+<!-- JS (UNCHANGED CONNECTION) -->
 <script src="script.js"></script>
 
 <script>
