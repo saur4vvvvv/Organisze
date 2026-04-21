@@ -7,6 +7,35 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="style.css">
+
+<style>
+/* Prevent text copying */
+body{
+  user-select:none;
+}
+
+/* Page system */
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+/* Achievements layout */
+.achievement{
+  padding:10px;
+  border:1px solid #333;
+  margin-bottom:8px;
+  border-radius:6px;
+}
+
+.achievement.locked{
+  opacity:0.4;
+}
+</style>
+
 </head>
 
 <body>
@@ -16,7 +45,16 @@
 <header>
   <h1>DISCIPLINE</h1>
   <div class="header-sub">Mission Control — Stay Hard</div>
+
+  <!-- Navigation -->
+  <button onclick="showHome()">HOME</button>
+  <button onclick="showAchievements()">ACHIEVEMENTS</button>
 </header>
+
+
+<!-- ================= HOME PAGE ================= -->
+
+<div id="homePage" class="page active">
 
 <div class="quote-box" id="quoteBox" title="Click for new quote"></div>
 
@@ -58,8 +96,42 @@
 <div class="section-label">Field Notes</div>
 <textarea id="notes" placeholder="Write your notes, plans, reflections..."></textarea>
 
-<!-- JS goes here -->
+</div>
+
+
+<!-- ================= ACHIEVEMENTS PAGE ================= -->
+
+<div id="achievementsPage" class="page">
+
+<h2>Achievements</h2>
+
+<div class="section-label">Unlocked</div>
+<div id="unlockedAchievements"></div>
+
+<div class="section-label">Locked</div>
+<div id="lockedAchievements"></div>
+
+</div>
+
+
+<!-- JS -->
 <script src="script.js"></script>
+
+<script>
+
+/* Page Navigation */
+
+function showHome(){
+  document.getElementById("homePage").classList.add("active")
+  document.getElementById("achievementsPage").classList.remove("active")
+}
+
+function showAchievements(){
+  document.getElementById("homePage").classList.remove("active")
+  document.getElementById("achievementsPage").classList.add("active")
+}
+
+</script>
 
 </body>
 </html>
