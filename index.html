@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Cyber Discipline</title>
+<link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+<header>
+<h1>CYBER DISCIPLINE</h1>
+
+<nav>
+<button onclick="showPage('home')">Home</button>
+<button onclick="showPage('achievements')">Achievements</button>
+<button onclick="showPage('nofap')">NoFap</button>
+</nav>
+
+</header>
+
+<section id="loginPage">
+
+<h2>Create Account</h2>
+
+<input id="username" placeholder="Username">
+<button onclick="createAccount()">Enter</button>
+
+</section>
+
+<section id="home" class="page">
+
+<h2>Daily Tasks</h2>
+
+<div id="taskPool">
+
+<input id="taskInput" placeholder="Add task to pool">
+<button onclick="addTask()">Add</button>
+
+</div>
+
+<button onclick="generateTasks()">Generate Today Tasks</button>
+
+<ul id="todayTasks"></ul>
+
+</section>
+
+<section id="achievements" class="page">
+
+<h2>Achievements</h2>
+
+<div id="achievementList"></div>
+
+</section>
+
+<section id="nofap" class="page">
+
+<h2>NoFap Streak</h2>
+
+<div id="streakDisplay">0 Days</div>
+
+<button id="startBtn" onclick="startNoFap()">START STREAK</button>
+
+</section>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>
