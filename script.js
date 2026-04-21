@@ -42,6 +42,8 @@ daysUsed: 0,
 streak: 0,
 lastCompletedDate: null,
 
+lastDailyGeneration: null,
+
 achievements: []
 };
 
@@ -69,20 +71,49 @@ localStorage.setItem("discipline_state", JSON.stringify(state));
 }
 
 function load(){
+
 const saved = localStorage.getItem("discipline_state");
+
 if(saved) state = { ...state, ...JSON.parse(saved) };
 
 const today = new Date().toDateString();
+
+/* first open */
 
 if(!state.firstOpenDate){
 state.firstOpenDate = today;
 state.daysUsed = 1;
 }
 
+/* day usage tracking */
+
 if(state.lastOpenDate !== today){
 state.daysUsed += 1;
 state.lastOpenDate = today;
 }
+
+/* ===== AUTO DAILY RESET ===== */
+
+if(state.lastDailyGeneration !== today){
+
+state.completedToday = 0;
+
+if(state.tasks.length > 0){
+
+const shuffled = [...state.tasks]
+.sort(()=>0.5-Math.random());
+
+state.dailyTasks =
+shuffled.slice(0,Math.min(5,shuffled.length));
+
+}
+
+state.lastDailyGeneration = today;
+
+save();
+
+}
+
 }
 
 
@@ -219,6 +250,8 @@ const shuffled = [...state.tasks]
 state.dailyTasks =
 shuffled.slice(0,Math.min(5,shuffled.length));
 
+state.lastDailyGeneration = new Date().toDateString();
+
 save();
 
 renderDaily();
@@ -235,7 +268,6 @@ state.xp += 10;
 state.completedToday += 1;
 
 const today = new Date().toDateString();
-
 
 /* streak logic */
 
@@ -301,21 +333,15 @@ ACHIEVEMENTS.forEach(a=>{
 if(state.achievements.includes(a.id)) return;
 
 if(a.type==="level" && state.level >= a.value){
-
 unlockAchievement(a);
-
 }
 
 if(a.type==="days" && state.daysUsed >= a.value){
-
 unlockAchievement(a);
-
 }
 
 if(a.type==="streak" && state.streak >= a.value){
-
 unlockAchievement(a);
-
 }
 
 });
@@ -414,3 +440,36 @@ renderDaily();
 renderAchievements();
 
 document.getElementById("notes").value = state.notes;
+
+
+/* ===== MIDNIGHT CHECK ===== */
+
+setInterval(()=>{
+
+const today = new Date().toDateString();
+
+if(state.lastDailyGeneration !== today){
+
+state.completedToday = 0;
+
+if(state.tasks.length > 0){
+
+const shuffled = [...state.tasks]
+.sort(()=>0.5-Math.random());
+
+state.dailyTasks =
+shuffled.slice(0,Math.min(5,shuffled.length));
+
+}
+
+state.lastDailyGeneration = today;
+
+save();
+
+updateStats();
+
+renderDaily();
+
+}
+
+},60000);
