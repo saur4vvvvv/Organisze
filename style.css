@@ -4,6 +4,8 @@ PAGE SYSTEM
 
 body{
   user-select: none;
+  margin: 0;
+  font-family: 'Share Tech Mono', monospace;
 }
 
 .page{
@@ -12,28 +14,16 @@ body{
 
 .page.active{
   display:block;
+  padding-bottom:70px; /* space for bottom nav */
 }
 
 
 /* =========================
-HEADER NAVIGATION
+HEADER NAVIGATION (DISABLED)
 ========================= */
 
 header button{
-  margin-top:10px;
-  margin-right:6px;
-  background:transparent;
-  color:var(--accent2);
-  border:1px solid var(--accent2);
-  font-family:'Share Tech Mono', monospace;
-  font-size:11px;
-  letter-spacing:2px;
-  padding:6px 10px;
-}
-
-header button:hover{
-  background:var(--accent2);
-  color:#000;
+  display:none;
 }
 
 
@@ -98,7 +88,7 @@ UNLOCKED ACHIEVEMENT EFFECT
 
 
 /* =========================
-SCROLL FOR ACHIEVEMENTS
+ACHIEVEMENT LIST LAYOUT
 ========================= */
 
 #unlockedAchievements,
@@ -119,4 +109,43 @@ ACHIEVEMENT ICONS
 
 .achievement.locked::before{
   content:"🔒 ";
+}
+
+
+/* =========================
+BOTTOM NAVIGATION
+========================= */
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:58px;
+  background:var(--panel);
+  border-top:1px solid var(--border);
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  z-index:999;
+  backdrop-filter: blur(10px);
+}
+
+
+/* ICON BUTTONS */
+.nav-btn{
+  background:transparent;
+  border:none;
+  color:var(--muted);
+  font-size:22px;
+  cursor:pointer;
+  transition:0.2s ease;
+  padding:8px;
+}
+
+
+/* HOVER EFFECT */
+.nav-btn:hover{
+  color:var(--accent);
+  transform:scale(1.15);
 }
